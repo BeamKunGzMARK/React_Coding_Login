@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap%27");
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box; /*? คำนวณต่างๆ พวกระยะขอบ อะไรต่างๆ อยู่ภายใต้ความกว้างที่เราตั้งไว้*/
+    font-family: "Poppins", sans-serif;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
