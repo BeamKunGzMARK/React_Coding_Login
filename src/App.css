@@ -70,3 +70,8 @@ button {
 * {
     font-family: "Poppins", sans-serif;
 }
+
+.bx-spin {
+    -webkit-animation: spin 8s linear infinite !important;
+    animation: spin 8s linear infinite !important;
+}

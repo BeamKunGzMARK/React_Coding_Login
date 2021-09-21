@@ -125,7 +125,7 @@ body {
 
 .profile_content .profile {
     display: inline-flex;
-    margin-right: 20px !important;
+    margin-right: 20px;
 }
 
 .profile_content .profile img {
