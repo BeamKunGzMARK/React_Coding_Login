@@ -1,5 +1,4 @@
 import React from "react";
-import "./css/desk.css";
 import { auth } from "./firebase_service/firebase";
 import { signingoogle } from "./firebase_service/firebase";
 

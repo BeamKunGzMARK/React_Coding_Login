@@ -11,6 +11,7 @@ function App() {
     useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
             setUser(user);
+            console.log(user);
         });
     }, []);
     return (
@@ -18,7 +19,7 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
             </header>
-            {user ? <Desk user={user} /> : <Nodesk />}
+            <Nodesk user={user} />
         </div>
     );
 }

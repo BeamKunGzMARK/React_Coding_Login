@@ -1,8 +1,26 @@
 import React from "react";
-import "./css/nodesk.css";
-import { signingoogle } from "./firebase_service/firebase";
+import { signingoogle, auth } from "./firebase_service/firebase";
+import "./css/form.css";
 
-function Nodesk() {
+function Nodesk({ user }) {
+    if (user !== undefined || null) {
+        console.log(user);
+    }
+
+    window.onload = function () {
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        let bxs = document.querySelector(".bx-search-alt");
+
+        btn.onclick = function () {
+            sidebar.classList.toggle("active");
+        };
+
+        bxs.onclick = function () {
+            sidebar.classList.toggle("active");
+        };
+    };
+
     return (
         <div className="sidebar">
             <div className="logo_content">
@@ -22,6 +40,7 @@ function Nodesk() {
                         ></i>
                         <input type="text" placeholder="Search..." />
                     </a>
+                    <span className="tooltip">Search</span>
                 </li>
                 <li>
                     <a href="#home">
@@ -32,6 +51,7 @@ function Nodesk() {
 
                         <span className="links_name">Home</span>
                     </a>
+                    <span className="tooltip">Home</span>
                 </li>
                 <li>
                     <a href="#html5">
@@ -41,6 +61,7 @@ function Nodesk() {
                         ></i>
                         <span className="links_name">HTML5</span>
                     </a>
+                    <span className="tooltip">HTML5</span>
                 </li>
                 <li>
                     <a href="#css3">
@@ -50,6 +71,7 @@ function Nodesk() {
                         ></i>
                         <span className="links_name">CSS3</span>
                     </a>
+                    <span className="tooltip">CSS3</span>
                 </li>
                 <li>
                     <a href="#javascript">
@@ -59,6 +81,7 @@ function Nodesk() {
                         ></i>
                         <span className="links_name">JavaScript</span>
                     </a>
+                    <span className="tooltip">JavaScript</span>
                 </li>
                 <li>
                     <a href="#react">
@@ -68,6 +91,7 @@ function Nodesk() {
                         ></i>
                         <span className="links_name">React</span>
                     </a>
+                    <span className="tooltip">React</span>
                 </li>
                 <li>
                     <a href="#nodejs">
@@ -77,6 +101,7 @@ function Nodesk() {
                         ></i>
                         <span className="links_name">NodeJS</span>
                     </a>
+                    <span className="tooltip">NodeJS</span>
                 </li>
                 <li>
                     <a href="#vitejs">
@@ -88,6 +113,7 @@ function Nodesk() {
                         </i>
                         <span className="links_name">ViteJS</span>
                     </a>
+                    <span className="tooltip">ViteJS</span>
                 </li>
                 <li>
                     <a href="#jquery">
@@ -97,22 +123,44 @@ function Nodesk() {
                         ></i>
                         <span className="links_name">jQuery</span>
                     </a>
+                    <span className="tooltip">jQuery</span>
                 </li>
             </ul>
 
             <div className="profile_content">
                 <div className="profile">
-                    <img
-                        src="https://cdn-icons-png.flaticon.com/512/2829/2829758.png"
-                        alt=""
-                    />
                     <div className="profile_details">
+                        {user === (undefined || null) ? (
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/2829/2829758.png"
+                                alt=""
+                            />
+                        ) : (
+                            <img src={user.photoURL} alt="" />
+                        )}
                         <div className="name_job">
-                            <div className="name">User</div>
+                            <div className="name">
+                                {user === (undefined || null)
+                                    ? "User"
+                                    : `${user.displayName}`}
+                            </div>
                             <div className="job">Developers</div>
                         </div>
                     </div>
-                    <i className="bx bx-log-in" onClick={signingoogle}></i>
+
+                    {user === (undefined || null) ? (
+                        <i
+                            className="bx bx-log-in"
+                            id="log_in"
+                            onClick={signingoogle}
+                        ></i>
+                    ) : (
+                        <i
+                            className="bx bx-log-out"
+                            id="log_out"
+                            onClick={() => auth.signOut()}
+                        ></i>
+                    )}
                 </div>
             </div>
         </div>
